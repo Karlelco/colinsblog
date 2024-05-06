@@ -14,7 +14,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { NewPost } from "../server/actions/form";
 
 const FormSchema = z.object({
   title: z.string().min(2, {
@@ -39,7 +38,14 @@ export default function InputForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    await NewPost(data);
+
+    const response = await fetch("http://localhost:3000/api/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
     console.log("Data sent to the database:", data);
     form.reset();
