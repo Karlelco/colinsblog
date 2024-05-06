@@ -38,28 +38,14 @@ export default function InputForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-
-    const response = await fetch("http://localhost:3000/api/posts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    // Send the data to the database
 
     console.log("Data sent to the database:", data);
     form.reset();
   }
 
-
-
-
-  
-
-
   return (
     <>
-      
       <Form {...form}>
         <form
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -109,18 +95,7 @@ export default function InputForm() {
         </form>
       </Form>
       <div>
-        {/* {
-          fetchData().map((post) => {
-            return (
-              <div key={post.id}>
-                <h1>{post.title}</h1>
-                <p>{post.content}</p>
-                <p>{post.Author}</p>
-              </div>
-            )
-          })
-        } */}
-
+       
       </div>
     </>
   );

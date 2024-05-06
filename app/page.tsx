@@ -1,4 +1,4 @@
-"use client";
+
 
 import Portfolio from "./portfolio/page";
 
